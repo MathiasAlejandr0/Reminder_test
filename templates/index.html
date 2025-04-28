@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pruebas Universitarias</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Mis Pruebas</h1>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+        </tr>
+        {% for exam in exams %}
+        <tr>
+            <td>{{ exam.name }}</td>
+            <td>{{ exam.date }}</td>
+            <td><a href="/delete/{{ exam.id }}">Eliminar</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <form method="POST" action="/add">
+        <label for="name">Nombre de la prueba:</label>
+        <input type="text" id="name" name="name" placeholder="Nombre de la prueba" required>
+        
+        <label for="date">Fecha de la prueba:</label>
+        <input type="date" id="date" name="date" required>
+        
+        <button type="submit">Agregar</button>
+    </form>
+</body>
+</html>
